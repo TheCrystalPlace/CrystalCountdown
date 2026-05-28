@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSMP4 Countdown</title>
+  <style>
+    body{
+      background:black;
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      font-family:Arial;
+      flex-direction:column;
+    }
+
+    #timer{
+      font-size:60px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>CSMP4 INICIA EN...</h1>
+<div id="timer"></div>
+
+<script>
+const target = new Date("2026-06-15T18:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = target - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance%(1000*60))/1000);
+
+  document.getElementById("timer").innerHTML =
+    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+</script>
+
+</body>
+</html>
